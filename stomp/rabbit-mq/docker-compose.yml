@@ -1,0 +1,17 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3.13.7-management
+    container_name: rabbitmq
+    environment:
+      - 'RABBITMQ_DEFAULT_USER=guest' # 관리자 아이디
+      - 'RABBITMQ_DEFAULT_PASS=guest' # 관리자 비밀번호
+      - 'RABBITMQ_ERLANG_COOKIE=RabbitMQ-Cookies'
+    ports:
+      - "5672:5672"   # RabbitMQ default port
+      - "15672:15672" # Web UI port
+      - "61613:61613" # STOMP port
+    command: >
+      bash -c "
+        rabbitmq-plugins enable --offline rabbitmq_stomp rabbitmq_web_stomp &&
+        docker-entrypoint.sh rabbitmq-server
+      "

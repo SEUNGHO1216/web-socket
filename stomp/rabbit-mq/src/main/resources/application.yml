@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: stomp-rabbit-mq
+  rabbitmq:
+    host: localhost #127.0.0.1
+    port: 5672 # RabbitMQ 연결 port
+    username: guest # RabbitMQ 웹 관리 콘솔 아이디
+    password: guest # RabbitMQ 웹 관리 콘솔 비밀번호
+    stomp-port: 61613 # STOMP 연결 port
+
+
